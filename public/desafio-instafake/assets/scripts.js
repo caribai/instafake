@@ -12,7 +12,7 @@ document.getElementById('form').addEventListener('submit', async (e)=>{
 //Funcion que toma el email y password,genera un token y lo guarda en el localstorage 
 const postData = async (email,password) => {
     try {
-        const response = await fetch('http://localhost:3000/api/login',
+        const response = await fetch('api/login',
         {
             method:'POST',
             body: JSON.stringify({email:email,password:password})
@@ -28,7 +28,7 @@ const postData = async (email,password) => {
 //funcion que obtiene las fotos si el usuario esta autorizado
 const getPosts = async(jwt)=> {
     try{
-        const response = await fetch('http://localhost:3000/api/photos',
+        const response = await fetch('api/photos',
         {
             method: 'GET',
             headers: {
@@ -88,7 +88,7 @@ document.getElementById('mostrarbtn').addEventListener('click',async()=>{
     const token = localStorage.getItem('jwt-token')
     if(pagina<=10){
         try{
-            const response = await fetch(`http://localhost:3000/api/photos?page=${pagina}`,
+            const response = await fetch(`api/photos?page=${pagina}`,
                 {
                 method: 'GET',
                 headers: {
